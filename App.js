@@ -2,7 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 import { ThemeProvider } from "styled-components/native";
-
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurantes.context";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -53,51 +53,53 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={{
-              tabBarActiveTintColor: "tomato",
-              tabBarInactiveTintColor: "gray",
-            }}
-          >
-            <Tab.Screen
-              name="Restaurants"
-              component={RestaurantsScreen}
-              options={{
-                tabBarLabel: "Home",
-                tabBarIcon: ({ color, size }) => (
-                  <Ionicons
-                    name={TAB_ICON.Restaurants}
-                    color={color}
-                    size={size}
-                  />
-                ),
+        <RestaurantsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={{
+                tabBarActiveTintColor: "tomato",
+                tabBarInactiveTintColor: "gray",
               }}
-            />
-            <Tab.Screen
-              name="Map"
-              component={MapScreen}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <Ionicons name={TAB_ICON.Map} color={color} size={size} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Settings"
-              component={SettingsScreen}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <Ionicons
-                    name={TAB_ICON.Settings}
-                    color={color}
-                    size={size}
-                  />
-                ),
-              }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
+            >
+              <Tab.Screen
+                name="Restaurants"
+                component={RestaurantsScreen}
+                options={{
+                  tabBarLabel: "Home",
+                  tabBarIcon: ({ color, size }) => (
+                    <Ionicons
+                      name={TAB_ICON.Restaurants}
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Map"
+                component={MapScreen}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Ionicons name={TAB_ICON.Map} color={color} size={size} />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Settings"
+                component={SettingsScreen}
+                options={{
+                  tabBarIcon: ({ color, size }) => (
+                    <Ionicons
+                      name={TAB_ICON.Settings}
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
+              />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>
