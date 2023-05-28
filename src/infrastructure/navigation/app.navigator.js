@@ -21,11 +21,6 @@ const Settings = () => (
     <Text>Settings</Text>
   </SafeArea>
 );
-const Map = () => (
-  <SafeArea>
-    <Text>Map</Text>
-  </SafeArea>
-);
 
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
